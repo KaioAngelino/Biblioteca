@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="PU">
+		<provider>org.hibernate.ja.HibernatePersistenceProvider</provider>
+		<class>br.com.biblioteca.model.bean.Livro</class>
+		<properties>
+
+			<property name="hibernate.hbm2ddl.auto" value="none" />
+			<property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQLDialect" />
+
+			<!-- Driver JDBC usado para esse banco de dados -->
+			<property name="hibernate.connection.driver_class"
+				value="com.mysql.jdbc.Driver" />
+			<!-- URL do Banco de Dados. -->
+			<property name="hibernate.connection.url"
+				value="jdbc:mysql://localhost/biblioteca" />
+			<!-- Usuario do Banco de Dados. -->
+			<property name="hibernate.connection.username" value="root" />
+			<!-- Senha do Banco de Dados. -->
+			<property name="hibernate.connection.password" value="" />
+
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<!-- <property
+				name="javax.persistence.schema-generation.database.action"
+				value="drop-and-create" />-->
+
+		</properties>
+	</persistence-unit>
+</persistence>

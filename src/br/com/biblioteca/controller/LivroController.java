@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import br.com.biblioteca.model.bean.Livro;
 
@@ -18,6 +20,10 @@ public class LivroController {
 	public String callInserirLivro(Livro livro) {
 
 		return "inserir_livros";
+	}
+	@GetMapping("/listagemLivro")
+	public String listarLivros() {
+		return "ListagemLivros";
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -38,17 +44,18 @@ public class LivroController {
 		livro.setNumeroPaginas(paginas);
 		livro.setDisponibilidade(disp);
 		livro.setDescricao(request.getParameter("descricao"));
-		
+
 		InserirLivro(livro);
 
 	}
 
-	public boolean InserirLivro(Livro livro) {
+	@RequestMapping(value = "/inserirLivro", method = RequestMethod.POST)
+	public String InserirLivro(Livro livro) {
 		System.out.println("Nome" + livro.getNome());
 		System.out.println("Autor" + livro.getAutor());
 		System.out.println("Numero de Paginas" + livro.getNumeroPaginas());
 		System.out.println("Descricao" + livro.getDescricao());
-		System.out.println("Livro" + livro.getNome()+ "inserido com sucesso!");
-		return true;
+		System.out.println("Livro " + livro.getNome() + " inserido com sucesso!");
+		return "inserir_livros";
 	}
 }

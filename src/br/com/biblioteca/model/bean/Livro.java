@@ -1,11 +1,24 @@
 package br.com.biblioteca.model.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Livro {
+	@Id
+	@GeneratedValue
 	private long id;
+	@Column
 	private String nome;
+	@Column
 	private String autor;
+	@Column
 	private int numeroPaginas;
+	@Column
 	private boolean disponibilidade;
+	@Column
 	private String descricao;
 
 	public long getId() {
